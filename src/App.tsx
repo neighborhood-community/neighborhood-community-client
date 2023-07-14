@@ -1,5 +1,5 @@
 function App() {
-	return <>Init setting</>;
+  return <>Init setting</>;
 }
 
 export default App;
