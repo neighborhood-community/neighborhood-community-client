@@ -5,12 +5,15 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App.tsx';
 
+import { GlobalStyle } from './style/GlobalStyle.tsx';
+
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={true} />
     <BrowserRouter>
+      <GlobalStyle />
       <App />
     </BrowserRouter>
   </QueryClientProvider>
