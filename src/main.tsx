@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App.tsx';
 
-import { GlobalStyle } from './style/GlobalStyle.tsx';
+import { GlobalStyle } from './style/globalStyle.tsx';
 
 const queryClient = new QueryClient();
 
