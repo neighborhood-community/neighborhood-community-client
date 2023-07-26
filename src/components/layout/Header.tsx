@@ -1,7 +1,25 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import AuthModal from '../login/molecules/AuthModal';
+import { accessTokenManage } from '../../utils/storage';
 
 const Header = () => {
+  const [isModal, setIsModal] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleModal = () => {
+    setIsModal(prev => !prev);
+  };
+
+  useEffect(() => {
+    const token = accessTokenManage.GET_TOKEN('accessToken');
+
+    if (token) {
+      setIsLogin(true);
+    }
+  }, []);
+
   return (
     <HeaderBox>
       <GNB>
@@ -9,13 +27,20 @@ const Header = () => {
           <NavigationLink>
             <Link to="/">홈</Link>
           </NavigationLink>
-          <NavigationLink>
-            <Link to="/post">글 작성</Link>
-          </NavigationLink>
+          {isLogin && (
+            <NavigationLink>
+              <Link to="/post">글 작성</Link>
+            </NavigationLink>
+          )}
         </LinkList>
-        <AuthModalButton>
-          <AuthButton>로그인/회원가입</AuthButton>
-        </AuthModalButton>
+        {isLogin ? (
+          <MyPageButton>마이페이지</MyPageButton>
+        ) : (
+          <AuthModalButton>
+            <AuthButton onClick={handleModal}>로그인</AuthButton>
+            {isModal && <AuthModal onClose={handleModal} />}
+          </AuthModalButton>
+        )}
       </GNB>
     </HeaderBox>
   );
@@ -50,5 +75,6 @@ const AuthButton = styled.button`
   font-size: 1.5rem;
   font-weight: bold;
 `;
+const MyPageButton = styled(AuthButton)``;
 
 export default Header;
