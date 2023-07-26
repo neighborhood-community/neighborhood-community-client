@@ -9,7 +9,10 @@ const M = {
     background-color: #000;
     color: #fff;
   `,
-
+  SlideImg: styled.img`
+    width: inherit;
+    height: inherit;
+  `,
   PreviewTitle: styled.h1`
     text-align: center;
     margin-bottom: 1.25rem;
@@ -23,7 +26,7 @@ const M = {
   `,
   PreviewTag: styled.li`
     margin-right: 0.625rem;
-    border: 1px solid #e1e2e3;
+    border: 0.1rem solid #e1e2e3;
     border-radius: 6.25rem;
 
     &:last-child {
@@ -35,7 +38,6 @@ const M = {
     border-radius: inherit;
   `,
   PreviewCardBox: styled.div`
-    /* width: 100%; */
     padding: 1rem;
     border-bottom: 0.0625rem solid #e1e2e3;
   `,
@@ -65,7 +67,7 @@ const M = {
   UserInformationBox: styled.div`
     display: flex;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   `,
   UserGender: styled.div`
     margin-right: 0.625rem;
@@ -78,7 +80,7 @@ const M = {
     text-align: right;
   `,
   MoreBtnSpan: styled.span`
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: bold;
   `,
 };

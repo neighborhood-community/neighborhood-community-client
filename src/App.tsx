@@ -1,27 +1,14 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import Home from './components/home';
-import Posts from './components/posts';
+import Router from './Router';
+
+import { GlobalStyle } from './style/globalStyle';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: '/post',
-          element: <Posts />,
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Router />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
