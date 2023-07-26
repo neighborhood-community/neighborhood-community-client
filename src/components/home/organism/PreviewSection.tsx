@@ -1,4 +1,3 @@
-import MoreButton from '../molecules/MoreButton';
 import PreviewCard from '../molecules/PreviewCard';
 import PreviewSelect from '../molecules/PreviewSelect';
 import { styled } from 'styled-components';
@@ -10,7 +9,6 @@ const PreviewSection = () => {
         <PreviewBox>
           <PreviewSelect />
         </PreviewBox>
-        <MoreButton />
         <CardListBox>
           <PreviewCard />
           <PreviewCard />
@@ -43,6 +41,7 @@ const CardListBox = styled.div`
   width: inherit;
   height: 336px;
   overflow-y: hidden;
+  grid-column-gap: 1.5rem;
 
   &:nth-child(2n) {
     grid-column-gap: 15px;
