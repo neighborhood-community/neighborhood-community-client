@@ -1,7 +1,12 @@
 import { M } from './style';
+import SlideImage_1 from '/assets/image/slide-image-1.svg';
 
 const ImageSlide = () => {
-  return <M.ImageSlideBox>이미지</M.ImageSlideBox>;
+  return (
+    <M.ImageSlideBox>
+      <M.SlideImg src={SlideImage_1} />
+    </M.ImageSlideBox>
+  );
 };
 
 export default ImageSlide;

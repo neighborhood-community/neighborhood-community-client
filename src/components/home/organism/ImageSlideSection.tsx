@@ -10,7 +10,9 @@ const ImageSlideSection = () => {
 };
 
 const Box = styled.div`
-  height: 21.875rem;
+  width: 70rem;
+  height: 25rem;
+  margin: 0 auto;
   margin-bottom: 2.5rem;
 `;
 
