@@ -21,20 +21,20 @@ const M = {
     transition: ${({ $carouseltransition }) => $carouseltransition};
   `,
   NextButton: styled.div`
+    z-index: 9;
     position: absolute;
     top: 50%;
     right: 3rem;
     cursor: pointer;
     font-size: 1.8rem;
-    z-index: 10;
   `,
   PrevButton: styled.div`
+    z-index: 9;
     position: absolute;
     top: 50%;
     left: 3rem;
     cursor: pointer;
     font-size: 1.8rem;
-    z-index: 10;
   `,
   SlideImg: styled.img`
     width: inherit;

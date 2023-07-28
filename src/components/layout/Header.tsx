@@ -47,6 +47,7 @@ const Header = () => {
 };
 
 const HeaderBox = styled.header`
+  z-index: 10;
   display: flex;
   justify-content: center;
   position: sticky;
@@ -63,6 +64,7 @@ const GNB = styled.div`
 `;
 const LinkList = styled.ul`
   display: flex;
+  align-items: center;
 `;
 const NavigationLink = styled.li`
   font-size: 1.5rem;
@@ -75,6 +77,9 @@ const AuthButton = styled.button`
   font-size: 1.5rem;
   font-weight: bold;
 `;
-const MyPageButton = styled(AuthButton)``;
+const MyPageButton = styled.button`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
 
 export default Header;

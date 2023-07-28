@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 const M = {
   BackdropContainer: styled.button`
-    z-index: 1;
+    z-index: 11;
     position: fixed;
     top: 0;
     width: 100%;
@@ -11,7 +11,7 @@ const M = {
     backdrop-filter: blur(0.0938rem);
   `,
   OverlayBox: styled.div`
-    z-index: 10;
+    z-index: 12;
     display: flex;
     flex-direction: column;
     justify-content: center;
