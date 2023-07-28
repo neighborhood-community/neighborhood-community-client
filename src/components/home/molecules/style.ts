@@ -1,13 +1,40 @@
 import { styled } from 'styled-components';
+import { StyledProps } from './type';
 
 const M = {
   ImageSlideBox: styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow-x: hidden;
     height: inherit;
-    background-color: #000;
+    background-color: #fff;
     color: #fff;
+  `,
+  ImageSlideWrapper: styled.div<StyledProps>`
+    position: absolute;
+    left: 0;
+    display: flex;
+    width: ${({ $imgdatalegnth }) => `${70 * $imgdatalegnth}rem`};
+    transform: translateX(${({ $transformindex, $imgdatalegnth }) => `${-1 * ((100 / $imgdatalegnth) * $transformindex)}%`});
+    transition: ${({ $carouseltransition }) => $carouseltransition};
+  `,
+  NextButton: styled.div`
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    z-index: 10;
+  `,
+  PrevButton: styled.div`
+    position: absolute;
+    top: 50%;
+    left: 3rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+    z-index: 10;
   `,
   SlideImg: styled.img`
     width: inherit;
