@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import Home from './components/home';
 import Posts from './components/posts';
 import Verify from './components/verify/Verify';
+import MyPage from './components/mypage';
 
 import { ROUTES } from './utils/constants/routes';
 
@@ -14,6 +15,7 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path={ROUTES.MAIN} element={<Home />} />
           <Route path={ROUTES.POST} element={<Posts />} />
+          <Route path={ROUTES.MYPAGE} element={<MyPage />} />
         </Route>
 
         <Route path={ROUTES.VERIFY} element={<Verify />} />
