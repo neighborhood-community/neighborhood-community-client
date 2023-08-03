@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 import AuthModal from '../login/molecules/AuthModal';
-import { accessTokenManage } from '../../utils/storage';
+import { accessTokenManage, refreshTokenManage } from '../../utils/storage';
 
 const Header = () => {
   const [isModal, setIsModal] = useState(false);
@@ -12,13 +12,20 @@ const Header = () => {
     setIsModal(prev => !prev);
   };
 
+  const handleLogout = () => {
+    accessTokenManage.DELETE_TOKEN();
+    refreshTokenManage.DELETE_COOKIE();
+
+    setIsLogin(false);
+  };
+
   useEffect(() => {
-    const token = accessTokenManage.GET_TOKEN('accessToken');
+    const token = accessTokenManage.GET_TOKEN();
 
     if (token) {
       setIsLogin(true);
     }
-  }, []);
+  }, [isLogin]);
 
   return (
     <HeaderBox>
@@ -34,9 +41,12 @@ const Header = () => {
           )}
         </LinkList>
         {isLogin ? (
-          <MyPageButton>
-            <Link to={'/mypage'}>마이페이지</Link>
-          </MyPageButton>
+          <UserBox>
+            <Link to={'/mypage'}>
+              <MyPageLink>마이페이지</MyPageLink>
+            </Link>
+            <LogoutButton onClick={handleLogout}>로그아웃</LogoutButton>
+          </UserBox>
         ) : (
           <AuthModalButton>
             <AuthButton onClick={handleModal}>로그인</AuthButton>
@@ -79,9 +89,18 @@ const AuthButton = styled.button`
   font-size: 1.5rem;
   font-weight: bold;
 `;
-const MyPageButton = styled.div`
+const MyPageLink = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
+  margin-right: 1rem;
+`;
+const LogoutButton = styled.button`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+const UserBox = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export default Header;
