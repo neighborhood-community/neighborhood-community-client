@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
 
-import { kakaoLogin } from '../../apis/socialLogin';
+import { kakaoLogin } from '../../apis/auth';
 import { accessTokenManage, refreshTokenManage } from '../../utils/storage';
 
 import { styled } from 'styled-components';
@@ -22,10 +22,10 @@ const Verify = () => {
     const getAuthcode = async () => {
       try {
         const response = await kakaoLogin(queryString!);
-        const { accessToken, refreshToken } = response.data;
+        const { accessToken, refreshToken } = response.data.data;
 
-        accessTokenManage.SET_TOKEN('accessToken', accessToken);
-        refreshTokenManage.SET_COOKIE('refreshToken', refreshToken);
+        accessTokenManage.SET_TOKEN(accessToken);
+        refreshTokenManage.SET_COOKIE(refreshToken);
 
         navigate('/');
 

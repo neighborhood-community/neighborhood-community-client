@@ -2,26 +2,29 @@ import { Cookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
+const ACCESS_TOKEN = 'accessToken';
+const REFRESH_TOKEN = 'refreshToken';
+
 export const refreshTokenManage = {
-  GET_COOKIE: (name: string) => {
-    return cookies.get(name);
+  GET_COOKIE: () => {
+    return cookies.get(REFRESH_TOKEN);
   },
-  SET_COOKIE: (name: string, value: string) => {
-    return cookies.set(name, value);
+  SET_COOKIE: (value: string) => {
+    return cookies.set(REFRESH_TOKEN, value);
   },
-  DELETE_COOKIE: (name: string) => {
-    return cookies.remove(name);
+  DELETE_COOKIE: () => {
+    return cookies.remove(REFRESH_TOKEN);
   },
 };
 
 export const accessTokenManage = {
-  GET_TOKEN: (name: string) => {
-    return localStorage.getItem(name);
+  GET_TOKEN: () => {
+    return localStorage.getItem(ACCESS_TOKEN);
   },
-  SET_TOKEN: (name: string, value: string) => {
-    return localStorage.setItem(name, value);
+  SET_TOKEN: (value: string) => {
+    return localStorage.setItem(ACCESS_TOKEN, value);
   },
-  DELETE_TOKEN: (name: string) => {
-    return localStorage.removeItem(name);
+  DELETE_TOKEN: () => {
+    return localStorage.removeItem(ACCESS_TOKEN);
   },
 };

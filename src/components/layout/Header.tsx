@@ -34,7 +34,9 @@ const Header = () => {
           )}
         </LinkList>
         {isLogin ? (
-          <MyPageButton>마이페이지</MyPageButton>
+          <MyPageButton>
+            <Link to={'/mypage'}>마이페이지</Link>
+          </MyPageButton>
         ) : (
           <AuthModalButton>
             <AuthButton onClick={handleModal}>로그인</AuthButton>
@@ -77,7 +79,7 @@ const AuthButton = styled.button`
   font-size: 1.5rem;
   font-weight: bold;
 `;
-const MyPageButton = styled.button`
+const MyPageButton = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
 `;
