@@ -1,4 +1,4 @@
-### 커밋 컨벤션
+### commit convention
 
 | Tag Name | Description      |
 | -------- | ---------------- |
