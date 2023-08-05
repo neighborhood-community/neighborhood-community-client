@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+
 import AuthModal from '../login/molecules/AuthModal';
+
 import { accessTokenManage, refreshTokenManage } from '../../utils/storage';
 
 const Header = () => {
   const [isModal, setIsModal] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleModal = () => {
     setIsModal(prev => !prev);
@@ -17,6 +21,7 @@ const Header = () => {
     refreshTokenManage.DELETE_COOKIE();
 
     setIsLogin(false);
+    navigate('/');
   };
 
   useEffect(() => {
