@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
+
   html {
     height: -webkit-fill-available;
   }
@@ -22,46 +25,20 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
     padding: 0;
     vertical-align: baseline;
-    font: inherit;
     font-size: 100%;
   }
-  /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, main, menu, nav, section {
     display: block;
   }
-  /* HTML5 hidden-attribute fix for newer browsers */
-  *[hidden] {
-      display: none;
-  }
-  body {
-    touch-action: manipulation;
-    line-height: 1;
-  }
   menu, ol, ul {
     list-style: none;
   }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
-  /* 위에가 styled-reset 내용 */
-
   * {
     box-sizing: border-box;
   } 
   html {
     -webkit-touch-callout: none;
-    /* -webkit-user-select:none; */
     -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
     
     scroll-behavior: smooth;

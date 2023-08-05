@@ -1,5 +1,14 @@
+import Router from './router/Router';
+
+import { GlobalStyle } from './style/globalStyle';
+
 function App() {
-  return <>Init setting</>;
+  return (
+    <>
+      <Router />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
