@@ -2,12 +2,18 @@ import ProfileImg from '/assets/image/profile-image.svg';
 
 import { M } from './style';
 
-const UserInfoCard = () => {
+interface UserInfoCardProps {
+  userGender: string;
+  userNickname: string;
+  userProfileImgPath: string;
+}
+
+const UserInfoCard = ({ userGender, userNickname, userProfileImgPath }: UserInfoCardProps) => {
   return (
     <M.UserInfoCardBox>
       <M.UserProfileImgBox>
         <M.UserProfileImgWrapper>
-          <M.UserProfileImg src={ProfileImg} alt="프로필이미지" />
+          <M.UserProfileImg src={userProfileImgPath || ProfileImg} alt="프로필이미지" />
         </M.UserProfileImgWrapper>
       </M.UserProfileImgBox>
       <M.Table>
@@ -21,10 +27,10 @@ const UserInfoCard = () => {
         </M.Thead>
         <M.Tbody>
           <M.Tr>
-            <M.Td>남자</M.Td>
+            <M.Td>{userGender || '비공개'}</M.Td>
           </M.Tr>
           <M.Tr>
-            <M.Td>뭘까요</M.Td>
+            <M.Td>{userNickname}</M.Td>
           </M.Tr>
         </M.Tbody>
       </M.Table>
