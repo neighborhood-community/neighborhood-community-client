@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { StyledProps } from './type';
 
 const M = {
   UserInfoCardBox: styled.div`
@@ -62,6 +63,15 @@ const M = {
     font-size: 1.4rem;
   `,
   Date: styled.p``,
+  PageNumberButton: styled.button<StyledProps>`
+    min-width: 2rem;
+    min-height: 2rem;
+    margin-right: 0.3rem;
+    border: 0.1rem solid #e1e2e3;
+    border-radius: 0.3rem;
+
+    background-color: ${({ $isChecked }) => ($isChecked ? '#888' : '#fff')};
+  `,
 };
 
 export { M };
