@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Layout from '../components/layout/Layout';
 import Home from '../components/home';
@@ -19,6 +19,7 @@ const Router = () => {
             <Route path={ROUTES.POST} element={<Posts />} />
             <Route path={ROUTES.MYPAGE} element={<MyPage />} />
           </Route>
+          <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
 
         <Route path={ROUTES.VERIFY} element={<Verify />} />
