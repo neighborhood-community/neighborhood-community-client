@@ -1,13 +1,14 @@
+import { RegisterProps } from '../posts/molecules/type';
 import { C } from './style';
 
-interface TextInputProps {
+interface TextInputProps extends RegisterProps {
   placeHolder: string;
 }
 
-const TextInput = ({ placeHolder }: TextInputProps) => {
+const TextInput = ({ register, placeHolder }: TextInputProps) => {
   return (
     <C.InputWrapper>
-      <C.Input type="text" placeholder={placeHolder} />
+      <C.Input {...register} type="text" placeholder={placeHolder} />
     </C.InputWrapper>
   );
 };

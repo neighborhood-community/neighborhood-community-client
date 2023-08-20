@@ -31,6 +31,10 @@ export const publicApi = {
     const response = await axiosInstance.get(path, option);
     return response;
   },
+  POST: async (path: string, body: object, option?: object) => {
+    const response = await axiosInstance.post(path, body, option);
+    return response;
+  },
 };
 
 export const authApi = {
