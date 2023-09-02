@@ -91,16 +91,31 @@ const M = {
     justify-content: left;
     align-items: center;
   `,
-  UserInformationBox: styled.div`
+  UserInformationBox: styled.ul`
     display: flex;
     width: 100%;
     margin-bottom: 2rem;
   `,
-  UserGender: styled.div`
-    margin-right: 0.625rem;
+  UserGender: styled.li`
+    margin-right: 0.8rem;
   `,
-  UserLocatoin: styled.div`
+  Gender: styled.span``,
+  UserRegion: styled.li`
+    margin-right: 0.8rem;
+  `,
+  Region: styled.span`
     color: #e1e2e3;
+  `,
+  ContentsCategory: styled.li`
+    margin-right: 0.8rem;
+    font-weight: bold;
+  `,
+  Category: styled.span`
+    color: #007ec4;
+  `,
+  ContentsDate: styled.li``,
+  Date: styled.span`
+    color: #888;
   `,
   BoardTitle: styled.p``,
   MoreBtnBox: styled.div`

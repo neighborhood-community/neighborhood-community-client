@@ -3,4 +3,5 @@ export const ROUTES = {
   POST: '/post',
   VERIFY: '/verify',
   MYPAGE: '/mypage',
+  CONTENTS: '/contents',
 };
