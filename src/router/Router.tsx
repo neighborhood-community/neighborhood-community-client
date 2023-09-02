@@ -5,6 +5,7 @@ import Home from '../components/home';
 import Posts from '../components/posts';
 import Verify from '../components/verify/Verify';
 import MyPage from '../components/mypage';
+import Contents from '../components/contents';
 
 import { ROUTES } from './routes';
 import ProtectedRouter from './ProtectedRouter';
@@ -18,6 +19,7 @@ const Router = () => {
           <Route element={<ProtectedRouter />}>
             <Route path={ROUTES.POST} element={<Posts />} />
             <Route path={ROUTES.MYPAGE} element={<MyPage />} />
+            <Route path={ROUTES.CONTENTS} element={<Contents />} />
           </Route>
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
