@@ -14,6 +14,7 @@ const ContentsDesc = () => {
     gender: '',
     region: '',
     createdAt: '',
+    content: '',
   });
 
   const [searchParams] = useSearchParams();
@@ -25,12 +26,13 @@ const ContentsDesc = () => {
       try {
         const response = await publicApi.GET(`${PATH.POST}/${userId}`);
         const { data } = response.data;
-        const { gender, region, createdAt } = data;
-        console.log(data);
+        const { gender, region, createdAt, content } = data;
+
         setContentsInfo({
           gender,
           region,
           createdAt: createdAt.substring(0, 16),
+          content,
         });
       } catch (error) {
         console.log(error);
@@ -44,7 +46,7 @@ const ContentsDesc = () => {
     <Box>
       <ContentsTitle />
       <UserInfoList gender={contentsInfo.gender} region={contentsInfo.region} createdAt={contentsInfo.createdAt} />
-      <ContentsDetail />
+      <ContentsDetail content={contentsInfo.content} />
     </Box>
   );
 };
