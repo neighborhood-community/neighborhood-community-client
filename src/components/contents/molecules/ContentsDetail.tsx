@@ -1,9 +1,13 @@
 import { M } from './style';
 
-const ContentsDetail = () => {
+interface ContentsDetailProps {
+  content: string;
+}
+
+const ContentsDetail = ({ content }: ContentsDetailProps) => {
   return (
     <M.ContentsDetailWrapper>
-      <M.Detail>ㅇㅇ</M.Detail>
+      <M.Detail>{content}</M.Detail>
     </M.ContentsDetailWrapper>
   );
 };
