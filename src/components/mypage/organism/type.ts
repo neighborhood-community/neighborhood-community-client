@@ -4,4 +4,16 @@ interface StyledProps extends HTMLAttributes<HTMLButtonElement> {
   $translateValue: number;
 }
 
-export type { StyledProps };
+type UserPostListType = {
+  category: string;
+  content: string;
+  createdAt: string;
+  gender: null | string;
+  id: number;
+  nickname: string;
+  profileImg: string;
+  region: string;
+  title: string;
+};
+
+export type { StyledProps, UserPostListType };

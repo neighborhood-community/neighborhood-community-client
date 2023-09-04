@@ -9,15 +9,21 @@ import usePostList from '../hook/usePostList';
 import useClickedPage from '../hook/useClickedPage';
 import { numberList } from '../../../utils/numberList';
 import usePostListSize from '../hook/usePostListSize';
-import { StyledProps } from './type';
+import { StyledProps, UserPostListType } from './type';
 import { useEffect, useState } from 'react';
+import { publicApi } from '../../../apis/core/axios';
+import { PATH } from '../../../apis/core/constants';
+import useChangeMapObject from '../hook/useChangeMapObject';
 
 const UserPostListSection = () => {
+  const [userPostList, setUserPostList] = useState<UserPostListType | undefined>(undefined);
   const [translateValue, setTranslateValue] = useState(0);
 
-  const { postListSize } = usePostListSize();
+  const [mapObject] = useChangeMapObject(userPostList);
+
+  const { postListSize } = usePostListSize(mapObject);
   const { pageNumber, handlePageNumber } = useClickedPage(postListSize);
-  const { postList } = usePostList(pageNumber);
+  const { postList } = usePostList(pageNumber, mapObject);
 
   const postNumberList = numberList(postListSize);
 
@@ -34,19 +40,35 @@ const UserPostListSection = () => {
   };
 
   useEffect(() => {
-    if (pageNumber === 1) {
-      setTranslateValue(0);
-    } else {
-      setTranslateValue(pageNumber % 5 === 0 ? Math.floor(pageNumber / 5) - 1 : Math.floor(pageNumber / 5));
-    }
+    pageNumber === 1 ? setTranslateValue(0) : setTranslateValue(pageNumber % 5 === 0 ? Math.floor(pageNumber / 5) - 1 : Math.floor(pageNumber / 5));
   }, [pageNumber]);
+
+  useEffect(() => {
+    const fetchUserPostData = async () => {
+      try {
+        const response = await publicApi.GET(`${PATH.MYPAGE}${PATH.POST_CATEGORY}`, {
+          params: {
+            category: 'all',
+            perPage: 40,
+            page: 1,
+          },
+        });
+        const { posts } = response.data.data;
+
+        setUserPostList(posts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserPostData();
+  }, []);
 
   return (
     <Box>
       <PagiNationBox>
         <ContentsListBox>
-          {postList.map(({ id, title, date }) => (
-            <PostContents key={id} title={title} date={date} />
+          {postList.map(({ id, title, createdAt }) => (
+            <PostContents key={id} id={id} title={title} createdAt={createdAt} />
           ))}
         </ContentsListBox>
         <PageNumberListBox>
