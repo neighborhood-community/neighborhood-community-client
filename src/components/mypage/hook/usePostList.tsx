@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import { createPageDataArray } from '../../../utils/createPageDataArray';
 
-const usePostList = (pageNumber: number) => {
+const usePostList = (pageNumber: number, userPostData: Map<number, []> | undefined) => {
   const [postList, setPostList] = useState([]);
-
-  const pageData = createPageDataArray();
 
   const handlePageData = (data: Map<number, []>) => {
     const pageData = data.get(pageNumber)!;
@@ -12,8 +9,10 @@ const usePostList = (pageNumber: number) => {
   };
 
   useEffect(() => {
-    handlePageData(pageData);
-  }, [pageNumber]);
+    if (userPostData) {
+      handlePageData(userPostData);
+    }
+  }, [pageNumber, userPostData]);
 
   return { postList };
 };
