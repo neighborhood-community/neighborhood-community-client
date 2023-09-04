@@ -1,16 +1,27 @@
+import { Link } from 'react-router-dom';
+
 import { M } from './style';
+import { ROUTES } from '../../../router/routes';
 
 interface PostContentsProps {
+  id: number;
   title: string;
-  date: string;
+  createdAt: string;
 }
 
-const PostContents = ({ title, date }: PostContentsProps) => {
+const PostContents = ({ id, title, createdAt }: PostContentsProps) => {
   return (
-    <M.ContentsWrapper>
-      <M.Title>{title}</M.Title>
-      <M.Date>{date}</M.Date>
-    </M.ContentsWrapper>
+    <Link
+      to={{
+        pathname: `${ROUTES.CONTENTS}`,
+        search: `userId=${id}`,
+      }}
+    >
+      <M.ContentsWrapper>
+        <M.Title>{title}</M.Title>
+        <M.Date>{createdAt}</M.Date>
+      </M.ContentsWrapper>
+    </Link>
   );
 };
 
