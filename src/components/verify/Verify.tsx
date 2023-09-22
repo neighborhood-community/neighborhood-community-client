@@ -1,15 +1,18 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
+import { styled } from 'styled-components';
 
+import { ValidContext } from '../../context/authorizationContext';
 import { kakaoLogin } from '../../apis/auth';
 import { accessTokenManage, refreshTokenManage } from '../../utils/storage';
-
-import { styled } from 'styled-components';
 
 const Verify = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  const { unexpiredRefreshToken } = useContext(ValidContext);
 
   const override: React.CSSProperties = {
     width: '12.25rem',
@@ -26,6 +29,8 @@ const Verify = () => {
 
         accessTokenManage.SET_TOKEN(accessToken);
         refreshTokenManage.SET_COOKIE(refreshToken);
+
+        unexpiredRefreshToken();
 
         navigate('/');
 
