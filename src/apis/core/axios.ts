@@ -38,6 +38,14 @@ export const publicApi = {
 };
 
 export const authApi = {
+  GET: async (path: string, refreshToken: string) => {
+    const response = await authInstance.get(path, {
+      headers: {
+        Authorization: `Bearer ${refreshToken}`,
+      },
+    });
+    return response;
+  },
   POST: async (path: string, body?: { refreshToken: string } | null, option?: { params: { code: string } }) => {
     const response = await authInstance.post(path, body, option);
     return response;
