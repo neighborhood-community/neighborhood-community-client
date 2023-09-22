@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import AuthModal from '../login/molecules/AuthModal';
-
 import { accessTokenManage, refreshTokenManage } from '../../utils/storage';
+import { ValidContext } from '../../context/authorizationContext';
 
 const Header = () => {
   const [isModal, setIsModal] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
+
+  const { isValid, expiredRefreshToken } = useContext(ValidContext);
 
   const navigate = useNavigate();
 
@@ -20,17 +22,10 @@ const Header = () => {
     accessTokenManage.DELETE_TOKEN();
     refreshTokenManage.DELETE_COOKIE();
 
-    setIsLogin(false);
+    expiredRefreshToken();
+
     navigate('/');
   };
-
-  useEffect(() => {
-    const token = accessTokenManage.GET_TOKEN();
-
-    if (token) {
-      setIsLogin(true);
-    }
-  }, [isLogin]);
 
   return (
     <HeaderBox>
@@ -39,13 +34,13 @@ const Header = () => {
           <NavigationLink>
             <Link to="/">홈</Link>
           </NavigationLink>
-          {isLogin && (
+          {isValid && (
             <NavigationLink>
               <Link to="/post">글 작성</Link>
             </NavigationLink>
           )}
         </LinkList>
-        {isLogin ? (
+        {isValid ? (
           <UserBox>
             <Link to={'/mypage'}>
               <MyPageLink>마이페이지</MyPageLink>
