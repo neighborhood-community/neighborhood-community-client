@@ -9,6 +9,7 @@ import Contents from '../components/contents';
 
 import { ROUTES } from './routes';
 import ProtectedRouter from './ProtectedRouter';
+import PostList from '../components/postlist';
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
             <Route path={ROUTES.POST} element={<Posts />} />
             <Route path={ROUTES.MYPAGE} element={<MyPage />} />
             <Route path={ROUTES.CONTENTS} element={<Contents />} />
+            <Route path={ROUTES.POSTLIST} element={<PostList />} />
           </Route>
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
