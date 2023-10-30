@@ -6,6 +6,8 @@ import PreviewCard from '../molecules/PreviewCard';
 import PreviewSelect from '../molecules/PreviewSelect';
 import { PATH } from '../../../apis/core/constants';
 import { publicApi } from '../../../apis/core/axios';
+import { Link } from 'react-router-dom';
+import { ROUTES } from '../../../router/routes';
 
 const PreviewSection = () => {
   const [contentsCategory, setContentsCategory] = useState('all');
@@ -42,6 +44,11 @@ const PreviewSection = () => {
         <PreviewBox>
           <PreviewSelect handleCategory={handleCategory} />
         </PreviewBox>
+        <PostMoreWrapper>
+          <Link to={ROUTES.POSTLIST}>
+            <PostMoreText>+ 더보기</PostMoreText>
+          </Link>
+        </PostMoreWrapper>
         <CardListBox>
           {contentsList.map(({ id, region, content, category, profileImg, gender, createdAt }) => (
             <PreviewCard key={id} id={id} region={region} content={content} category={category} profileImg={profileImg} gender={gender} date={createdAt} />
@@ -56,7 +63,7 @@ const Box = styled.div`
   height: 100vh;
 `;
 const Content = styled.div`
-  width: 700px;
+  width: 70rem;
   margin: 0 auto;
 `;
 const PreviewBox = styled.div`
@@ -67,7 +74,7 @@ const CardListBox = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   width: inherit;
-  height: 336px;
+  height: 33.6rem;
   overflow-y: hidden;
   grid-column-gap: 1.5rem;
 
@@ -75,5 +82,9 @@ const CardListBox = styled.div`
     grid-column-gap: 15px;
   }
 `;
+const PostMoreWrapper = styled.div`
+  text-align: right;
+`;
+const PostMoreText = styled.span``;
 
 export default PreviewSection;
